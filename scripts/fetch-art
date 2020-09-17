@@ -29,8 +29,8 @@ elif [ "$source" = vlc ]; then
 
     url="$(playerctl -p vlc metadata mpris:artUrl)"
 elif [ "$source" = cmus ]; then
-    if ! command -v ffmpeg >/dev/null; then
-        echo "Missing ffmpeg!"
+    if ! command -v cmus-remote >/dev/null; then
+        echo "Missing cmus-remote!"
         exit 1
     fi
 
