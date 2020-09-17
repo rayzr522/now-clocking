@@ -42,6 +42,7 @@
 ### Supported Players
 
 - [Spotify](https://www.spotify.com/)
+- [VLC](https://www.videolan.org/)
 - [cmus](https://cmus.github.io/)
 
 ## Installation
