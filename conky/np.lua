@@ -31,7 +31,7 @@ conky.config = {
 };
 
 conky.text = [[
-${if_running spotify}${color #fff}${font Gotham Book:pixelsize=18}NOW PLAYING:
+${if_match "" != "${exec playerctl -p spotify status}}${color #fff}${font Gotham Book:pixelsize=18}NOW PLAYING:
 ${color #fff}${font Gotham Book:pixelsize=15}
 ${color #fff}${font Gotham:style=bold:pixelsize=44}           ${font Gotham:style=bold:pixelsize=46}${exec playerctl -p spotify metadata artist}${font Gotham:style=bold:pixelsize=10}
 ${color #fff}${font Gotham Book:pixelsize=44}           ${font Gotham Book:pixelsize=23}${exec playerctl -p spotify metadata title}
