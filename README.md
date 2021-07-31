@@ -16,8 +16,6 @@
   - [Supported Players](#supported-players)
 - [Installation](#installation)
 - [FAQ](#faq)
-- [Credits](#credits)
-- [Join Me](#join-me)
 
 ## Requirements
 
