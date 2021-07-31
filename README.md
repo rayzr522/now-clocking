@@ -1,5 +1,5 @@
 <h1 align="center">Now Clocking</h1>
-<p align="center"><i>Made with :heart: by <a href="https://github.com/gamehelp16">@gamehelp16</a> and <a href="https://github.com/Rayzr522">@Rayzr522</a></i></p>
+<p align="center"><i>Made with :heart: by <a href="https://github.com/gamehelp16">@gamehelp16</a>, <a href="https://github.com/Rayzr522">@Rayzr522</a> and <a href="https://github.com/jgabriel98">@jgabriel98</a></i></p>
 
 > **Now Clocking** is a Conky widget which shows a Monstercat style Now Playing when music is played via Spotify or cmus, or a clock when no music is playing.
 
@@ -72,13 +72,3 @@ $ path/to/now-clocking/start.sh
 > **Why are there 2 Conky widgets?**
 
 Originally, this had to do with weird transparency issues in Conky that required a non-transparent album artwork. However, that has long since been patched in Conky. The widgets have remained separated, however, so as to make aligning everything easier, especially since one widget functions both as the track info *and* a clock.
-
-## Credits
-
-Huge props to the original creator, [@gamehelp16](https://github.com/gamehelp16). I used this script back in 2017/2018 and rediscovered it in 2020, and decided to rework it to be more portable, efficient, and updated to modern Conky config standards.
-
-Also huge props to Hoefler & Frere-Jones for the wonderful Gotham fonts, and Julieta Ulanovsky (and crew) for the slick Montserrat font.
-
-## Join Me
-
-[![Discord Badge](https://github.com/Rayzr522/ProjectResources/raw/master/RayzrDev/badge-small.png)](https://rayzr.dev/join)
