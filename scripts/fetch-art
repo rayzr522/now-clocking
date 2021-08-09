@@ -28,6 +28,13 @@ elif [ "$source" = vlc ]; then
     fi
 
     url="$(playerctl -p vlc metadata mpris:artUrl)"
+elif [ "$source" = Lollypop ]; then
+    if ! command -v playerctl >/dev/null; then
+        echo "Missing playerctl!"
+        exit 1
+    fi
+
+    url="$(playerctl -p Lollypop metadata mpris:artUrl)"
 elif [ "$source" = cmus ]; then
     if ! command -v cmus-remote >/dev/null; then
         echo "Missing cmus-remote!"
