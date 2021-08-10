@@ -43,6 +43,7 @@
 
 - [Spotify](https://www.spotify.com/)
 - [VLC](https://www.videolan.org/)
+- [Lollypop](https://wiki.gnome.org/Apps/Lollypop)
 - [cmus](https://cmus.github.io/)
 
 ## Installation
