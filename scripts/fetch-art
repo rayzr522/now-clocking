@@ -21,6 +21,14 @@ if [ "$source" = spotify ]; then
     fi
 
     url="$(playerctl -p spotify metadata mpris:artUrl | sed 's;https://open.spotify.com;http://i.scdn.co;g')"
+
+elif [ "$source" = spotifyd ]; then
+    if ! command -v playerctl >/dev/null; then
+        echo "Missing playerctl!"
+        exit 1
+    fi
+
+    url="$(playerctl -p spotifyd metadata mpris:artUrl)"
 elif [ "$source" = vlc ]; then
     if ! command -v playerctl >/dev/null; then
         echo "Missing playerctl!"
