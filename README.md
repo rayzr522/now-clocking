@@ -42,7 +42,9 @@
 ### Supported Players
 
 - [Spotify](https://www.spotify.com/)
+- [spotifyd](https://github.com/Spotifyd/spotifyd)
 - [VLC](https://www.videolan.org/)
+- [Lollypop](https://wiki.gnome.org/Apps/Lollypop)
 - [cmus](https://cmus.github.io/)
 
 ## Installation
