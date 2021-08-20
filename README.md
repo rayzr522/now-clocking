@@ -4,8 +4,8 @@
 > **Now Clocking** is a Conky widget which shows a Monstercat style Now Playing when music is played via Spotify or cmus, or a clock when no music is playing.
 
 <div align="center" style="display:inline">
-<img alt="Screenshot of clock" src="res/now-clocking-clock.jpg" width="438px" />
-<img alt="Screenshot of spotify" src="res/now-clocking-spotify.jpg" width="438px" />
+<img alt="Screenshot of clock" src="res/now-clocking-clock.jpg" width="416px" />
+<img alt="Screenshot of spotify" src="res/now-clocking-spotify.jpg" width="416px" />
 </div>
 
 ### Table of contents
