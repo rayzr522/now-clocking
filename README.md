@@ -50,21 +50,28 @@
 ## Installation
 
 1. Install all required [packages](#packages):
+
 ```bash
 # Ubuntu
 $ sudo apt install conky ffmpeg playerctl
 # Arch
 $ sudo pacman -S conky ffmpeg playerctl
 ```
+
 2. Clone the repo:
+
 ```bash
 $ git clone git@github.com:Rayzr522/now-clocking.git
 ```
+
 3. Ensure that all required [fonts](#fonts) are installed:
+
 ```bash
 $ ./scripts/download-fonts.sh
 ```
+
 4. Run the `start.sh` script to start the widget (forks to background):
+
 ```bash
 $ path/to/now-clocking/start.sh
 ```
@@ -73,14 +80,10 @@ $ path/to/now-clocking/start.sh
 
 > **Why are there 2 Conky widgets?**
 
-Originally, this had to do with weird transparency issues in Conky that required a non-transparent album artwork. However, that has long since been patched in Conky. The widgets have remained separated, however, so as to make aligning everything easier, especially since one widget functions both as the track info *and* a clock.
+Originally, this had to do with weird transparency issues in Conky that required a non-transparent album artwork. However, that has long since been patched in Conky. The widgets have remained separated, however, so as to make aligning everything easier, especially since one widget functions both as the track info _and_ a clock.
 
 ## Credits
 
 Huge props to the original creator, [@gamehelp16](https://github.com/gamehelp16). I used this script back in 2017/2018 and rediscovered it in 2020, and decided to rework it to be more portable, efficient, and updated to modern Conky config standards.
 
 Also huge props to Hoefler & Frere-Jones for the wonderful Gotham fonts, and Julieta Ulanovsky (and crew) for the slick Montserrat font.
-
-## Join Me
-
-[![Discord Badge](https://github.com/Rayzr522/ProjectResources/raw/master/RayzrDev/badge-small.png)](https://rayzr.dev/join)
