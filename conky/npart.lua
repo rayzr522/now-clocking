@@ -34,6 +34,8 @@ ${else}${if_match "" != "${exec playerctl -p Lollypop status}"}${exec ./scripts/
     ${image ./data/Lollypop.png -p 0,0 -s 125x125 -n}
 ${else}${if_match "" != "${exec playerctl -p spotifyd status}"}${exec ./scripts/fetch-art spotifyd}
     ${image ./data/spotifyd.png -p 0,0 -s 125x125 -n}
+${else}${if_match "" != "${exec playerctl -p mps-youtube status}"}${exec ./scripts/fetch-art mps-youtube}
+    ${image ./data/mps-youtube.png -p 0,0 -s 125x125 -n}
 ${else}${if_running cmus}${exec ./scripts/fetch-art cmus}
 	${image ./data/cmus.png -p 0,0 -s 125x125 -n}
 ${endif}

@@ -43,6 +43,8 @@ elif [ "$source" = Lollypop ]; then
     fi
 
     url="$(playerctl -p Lollypop metadata mpris:artUrl)"
+elif [ "$source" = mps-youtube ]; then
+    url="$(playerctl -p mps-youtube metadata mpris:artUrl)"
 elif [ "$source" = cmus ]; then
     if ! command -v cmus-remote >/dev/null; then
         echo "Missing cmus-remote!"

@@ -51,6 +51,11 @@ ${color #fff}${font Gotham Book:pixelsize=15}
 ${color #fff}${font Gotham:style=bold:pixelsize=44}           ${font Gotham:style=bold:pixelsize=46}${exec playerctl -p Lollypop metadata artist}${font Gotham:style=bold:pixelsize=10}
 ${color #fff}${font Gotham Book:pixelsize=44}           ${font Gotham Book:pixelsize=23}${exec playerctl -p Lollypop metadata title}
 
+${else}${if_match "" != "${exec playerctl -p mps-youtube status}"}${color #fff}${font Gotham Book:pixelsize=18}NOW PLAYING:
+${color #fff}${font Gotham Book:pixelsize=15}
+${color #fff}${font Gotham:style=bold:pixelsize=44}           ${font Gotham:style=bold:pixelsize=46}${exec playerctl -p mps-youtube metadata artist}${font Gotham:style=bold:pixelsize=10}
+${color #fff}${font Gotham Book:pixelsize=44}           ${font Gotham Book:pixelsize=23}${exec playerctl -p mps-youtube metadata title}
+
 ${else}${if_running cmus}${color #fff}${font Gotham Book:pixelsize=18}NOW PLAYING:
 ${color #fff}${font Gotham Book:pixelsize=15}
 ${color #fff}${font Gotham:style=bold:pixelsize=44}           ${font Gotham:style=bold:pixelsize=46}${exec cmus-remote -Q 2>/dev/null | grep 'tag artist' | cut -d " " -f 3-}${font Gotham:style=bold:pixelsize=10}
