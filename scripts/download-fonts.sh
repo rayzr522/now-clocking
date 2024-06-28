@@ -25,16 +25,15 @@ download_font() {
     fi
 
     case $url_type in
-        fontmirror-otf)
-            curl -H "Referer: https://www.fontmirror.com/gotham-book" -L "$url" -o "$name.otf"
-            mv -i "$name.otf" "$fonts_dir"
-            ;;
-        ttf-zip)
-            curl -L "$url" -o "download.zip"
-            mkdir download
+        fontsgeek-zip)
+            curl -H "Referer: https://www.fontsgeek.com" -L "$url" -o download.zip
             unzip -d download download.zip
-            mv download/*.ttf "$fonts_dir"
+            mv -i download/*/*.otf "$fonts_dir"
             rm -r download
+            ;;
+        googlefonts)
+            curl https://raw.githubusercontent.com/neverpanic/google-font-download/master/google-font-download | bash -s - --format=ttf "$url"
+            mv -i *.ttf "$fonts_dir"
             ;;
         *)
             echo "Unknown URL type: $url_type" >&2
@@ -57,9 +56,9 @@ workdir="$(mktemp -d)"
 mkdir -p "$fonts_dir"
 cd "$workdir"
 
-download_font fontmirror-otf "Gotham Book" "Gotham Book" "https://www.fontmirror.com/app_public/files/t/1/Gotham-Book_369762f0eb85426ad24f9a42322c0d9b.otf" "Gotham_Book"
-download_font fontmirror-otf "Gotham Bold" "Gotham:style=Bold" "https://www.fontmirror.com/app_public/files/t/1/Gotham-Bold_0_7163aa8bf87d8495b8fa6fab4ae797c2.otf" "Gotham_Bold"
-download_font ttf-zip "Montserrat" "Montserrat" "https://fonts.google.com/download?family=Montserrat"
+download_font fontsgeek-zip "Gotham Book" "Gotham Book" "https://media.fontsgeek.com/download/zip/g/o/gotham-book_dfEm3.zip"
+download_font fontsgeek-zip "Gotham Bold" "Gotham:style=Bold" "https://media.fontsgeek.com/download/zip/g/o/gotham-bold_KicGd.zip"
+download_font googlefonts "Montserrat" "Montserrat" "Montserrat"
 
 if [[ $total_downloaded -gt 0 ]]; then
     echo -n "Reloading font cache... "
