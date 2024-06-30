@@ -1,27 +1,27 @@
 <h1 align="center">Now Clocking</h1>
-<p align="center"><i>Made with :heart: by <a href="https://github.com/gamehelp16">@gamehelp16</a> and <a href="https://github.com/Rayzr522">@Rayzr522</a></i></p>
+<p align="center"><i>made with :heart: by <a href="https://github.com/gamehelp16">@gamehelp16</a> and <a href="https://github.com/rayzr522">@rayzr522</a></i></p>
 
 > **Now Clocking** is a Conky widget which shows a Monstercat style Now Playing when music is played via Spotify or cmus, or a clock when no music is playing.
 
 <div align="center" style="display:inline">
-<img alt="Screenshot of clock" src="res/now-clocking-clock.jpg" width="416px" />
-<img alt="Screenshot of spotify" src="res/now-clocking-spotify.jpg" width="416px" />
+<img alt="screenshot of clock" src="res/now-clocking-clock.jpg" width="416px" />
+<img alt="screenshot of spotify" src="res/now-clocking-spotify.jpg" width="416px" />
 </div>
 
 ### Table of contents
 
-- [Requirements](#requirements)
-  - [Packages](#packages)
-  - [Fonts](#fonts)
-  - [Supported Players](#supported-players)
-- [Installation](#installation)
+- [requirements](#requirements)
+  - [packages](#packages)
+  - [fonts](#fonts)
+  - [supported Players](#supported-players)
+- [installation](#installation)
+  - [config](#config)
 - [FAQ](#faq)
-- [Credits](#credits)
-- [Join Me](#join-me)
+- [credits](#credits)
 
-## Requirements
+## requirements
 
-### Packages
+### packages
 
 - [conky](https://github.com/brndnmtthws/conky/)
 - [ffmpeg](https://www.ffmpeg.org/)
@@ -31,65 +31,71 @@
 
 > Arch: `sudo pacman -S conky ffmpeg playerctl`
 
-### Fonts
+### fonts
 
 - [Montserrat Light](https://fonts.google.com/specimen/Montserrat?selection.family=Montserrat:300)
-- [Gotham Bold](https://www.fontmirror.com/gotham-bold)
-- [Gotham Book](https://www.fontmirror.com/gotham-book)
+- [Gotham Bold](https://fontsgeek.com/fonts/Gotham-Bold)
+- [Gotham Book](https://fontsgeek.com/fonts/Gotham-Book)
 
-> On most Linux distros, you can just run the `./scripts/download-fonts.sh` script to download the fonts.
+> on most Linux distros, you can just run the `./scripts/download-fonts.sh` script to download the fonts
 
-### Supported Players
+### supported players
 
 - [Spotify](https://www.spotify.com/)
 - [spotifyd](https://github.com/Spotifyd/spotifyd)
 - [VLC](https://www.videolan.org/)
 - [Lollypop](https://wiki.gnome.org/Apps/Lollypop)
 - [cmus](https://cmus.github.io/)
+- [mps-youtube/yewtube](https://github.com/mps-youtube/yewtube)
+- [Muzika](https://github.com/vixalien/muzika)
 
-## Installation
+## installation
 
-1. Install all required [packages](#packages):
-
-```bash
-# Ubuntu
-$ sudo apt install conky ffmpeg playerctl
-# Arch
-$ sudo pacman -S conky ffmpeg playerctl
-```
-
-2. Clone the repo:
+1. install all required [packages](#packages)
+2. clone the repo:
 
 ```bash
-$ git clone git@github.com:rayzr522/now-clocking.git
+git clone git@github.com:rayzr522/now-clocking.git
 ```
 
-3. Ensure that all required [fonts](#fonts) are installed:
+3. ensure that all required [fonts](#fonts) are installed:
 
 ```bash
-$ ./scripts/download-fonts.sh
+# install by hand or you can try the automated installation script:
+./scripts/download-fonts.sh
 ```
 
-4. Run the `start.sh` script to start the widget (forks to background):
+4. run the `start.sh` script to start the widget (forks to background):
 
 ```bash
-$ path/to/now-clocking/start.sh
+path/to/now-clocking/start.sh
 ```
+
+### config
+
+there's a few things you can configure about these widgets via environment variables. the widgets will automatically attempt to load a `config.env` in this directory. feel free to copy `config-example.env` for this purpose
+
+the settings you can configure are as follows:
+
+| setting                     | example              | description                                                                                                                                                                         |
+| --------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NOW_CLOCKING_ARTWORK_TINT` | `green` or `#aabbcc` | applies a color filter to the album artwork. can be useful for matching it to your wallpaper/theme. requires `imagemagick` to be installed                                          |
+| `NOW_CLOCKING_DISPLAY`      | `1`                  | changes the display that the widget renders on via the `xinerama_head` conky option. `0` is probably your default display                                                           |
+| `NOW_CLOCKING_OFFSET_X`     | `69`                 | shifts the widget on the X axis by the given amount. default positioning is designed to look pretty well balanced, but if you need to adjust it this gives you an easy way to do so |
+| `NOW_CLOCKING_OFFSET_Y`     | `420`                | same as above, but on the Y axis                                                                                                                                                    |
 
 ## FAQ
 
-> **Why are there 2 Conky widgets?**
+> **why are there 2 Conky widgets?**
 
-Originally, this had to do with weird transparency issues in Conky that required a non-transparent album artwork. However, that has long since been patched in Conky. The widgets have remained separated, however, so as to make aligning everything easier, especially since one widget functions both as the track info _and_ a clock.
+originally, this had to do with weird transparency issues in conky that required a non-transparent album artwork. however, that has long since been patched in conky. the widgets have remained separated, however, so as to make aligning everything easier, especially since one widget functions both as the track info _and_ a clock
 
-> **How do I move the widget to another monitor?**
+> **how do I configure which monitor to display the widget on?**
 
-Multi-monitor support on Conky is weird. This might not be the right solution, but I added support for a `NOW_CLOCKING_OFFSET_X` and `NOW_CLOCKING_OFFSET_Y` variable.
+set `NOW_CLOCKING_DISPLAY` in your `config.env`. see [config](#config) for more info
 
-For example, I have 2 2560x1440 monitors with the right monitor being my primary. To move the widget to the left, I just have to set `NOW_CLOCKING_OFFSET_X` to `-2560` when starting conky.
+## credits
 
-## Credits
+huge props to the original creator, [@gamehelp16](https://github.com/gamehelp16). I used this script back in 2017/2018 and rediscovered it in 2020, and decided to rework it to be more portable, efficient, and updated to modern conky config standards
 
-Huge props to the original creator, [@gamehelp16](https://github.com/gamehelp16). I used this script back in 2017/2018 and rediscovered it in 2020, and decided to rework it to be more portable, efficient, and updated to modern Conky config standards.
-
-Also huge props to Hoefler & Frere-Jones for the wonderful Gotham fonts, and Julieta Ulanovsky (and crew) for the slick Montserrat font.
+also huge props to Hoefler & Frere-Jones for the wonderful Gotham fonts, and Julieta Ulanovsky (and crew) for the slick Montserrat font
