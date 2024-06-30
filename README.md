@@ -1,7 +1,7 @@
 <h1 align="center">Now Clocking</h1>
 <p align="center"><i>made with :heart: by <a href="https://github.com/gamehelp16">@gamehelp16</a> and <a href="https://github.com/rayzr522">@rayzr522</a></i></p>
 
-> **Now Clocking** is a Conky widget which shows a Monstercat style Now Playing when music is played via Spotify or cmus, or a clock when no music is playing.
+> **Now Clocking** is a Conky widget which shows a Monstercat style Now Playing when music is played via a playerctl-compatible player or cmus, or a clock when no music is playing
 
 <div align="center" style="display:inline">
 <img alt="screenshot of clock" src="res/now-clocking-clock.jpg" width="416px" />
