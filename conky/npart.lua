@@ -7,6 +7,7 @@ conky.config = {
     alignment = 'bottom_left',
     gap_x = 50 + tonumber(os.getenv("NOW_CLOCKING_OFFSET_X") or 0),
     gap_y = 125 + tonumber(os.getenv("NOW_CLOCKING_OFFSET_Y") or 0),
+    xinerama_head = tonumber(os.getenv("NOW_CLOCKING_DISPLAY") or 0),
     minimum_width = 125,
     maximum_width = 125,
     minimum_height = 125,
@@ -26,20 +27,7 @@ conky.config = {
 };
 
 conky.text = [[
-${if_running spotify}${exec ./scripts/fetch-art spotify}
-	${image ./data/spotify.png -p 0,0 -s 125x125 -n}
-${else}${if_match "" != "${exec playerctl -p vlc status}"}${exec ./scripts/fetch-art vlc}
-	${image ./data/vlc.png -p 0,0 -s 125x125 -n}
-${else}${if_match "" != "${exec playerctl -p Lollypop status}"}${exec ./scripts/fetch-art Lollypop}
-    ${image ./data/Lollypop.png -p 0,0 -s 125x125 -n}
-${else}${if_match "" != "${exec playerctl -p spotifyd status}"}${exec ./scripts/fetch-art spotifyd}
-    ${image ./data/spotifyd.png -p 0,0 -s 125x125 -n}
-${else}${if_match "" != "${exec playerctl -p mps-youtube status}"}${exec ./scripts/fetch-art mps-youtube}
-    ${image ./data/mps-youtube.png -p 0,0 -s 125x125 -n}
-${else}${if_running cmus}${exec ./scripts/fetch-art cmus}
-	${image ./data/cmus.png -p 0,0 -s 125x125 -n}
-${endif}
-${endif}
-${endif}
+${if_match "" != "${exec ./scripts/get-metadata}"}
+	${execp ./scripts/fetch-art}
 ${endif}
 ]];

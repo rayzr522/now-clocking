@@ -13,7 +13,7 @@
 - [requirements](#requirements)
   - [packages](#packages)
   - [fonts](#fonts)
-  - [supported Players](#supported-players)
+  - [supported players](#supported-players)
 - [installation](#installation)
   - [config](#config)
 - [FAQ](#faq)
@@ -37,21 +37,25 @@
 - [Gotham Bold](https://fontsgeek.com/fonts/Gotham-Bold)
 - [Gotham Book](https://fontsgeek.com/fonts/Gotham-Book)
 
-> on most Linux distros, you can just run the `./scripts/download-fonts.sh` script to download the fonts
+> on most Linux distros, you can just run the `./download-fonts.sh` script to download the fonts
 
 ### supported players
 
+these widgets support `cmus` as well as (in theory) any MPRIS/playerctl compatible players
+
+the following is a non-exhaustive list of examples of supported players:
+
+- [cmus](https://cmus.github.io/)
 - [Spotify](https://www.spotify.com/)
 - [spotifyd](https://github.com/Spotifyd/spotifyd)
 - [VLC](https://www.videolan.org/)
 - [Lollypop](https://wiki.gnome.org/Apps/Lollypop)
-- [cmus](https://cmus.github.io/)
 - [mps-youtube/yewtube](https://github.com/mps-youtube/yewtube)
 - [Muzika](https://github.com/vixalien/muzika)
 
 ## installation
 
-1. install all required [packages](#packages)
+1. install all required [packages](#packages) and [fonts](#fonts)
 2. clone the repo:
 
 ```bash
@@ -62,7 +66,7 @@ git clone git@github.com:rayzr522/now-clocking.git
 
 ```bash
 # install by hand or you can try the automated installation script:
-./scripts/download-fonts.sh
+./download-fonts.sh
 ```
 
 4. run the `start.sh` script to start the widget (forks to background):
@@ -93,6 +97,12 @@ originally, this had to do with weird transparency issues in conky that required
 > **how do I configure which monitor to display the widget on?**
 
 set `NOW_CLOCKING_DISPLAY` in your `config.env`. see [config](#config) for more info
+
+> **the widget is slow to update when using with <insert playerctl-compatbile player here>**
+
+if you're using a playerctl-compatible player _inside a flatpak_, you may need to use [Flatseal](https://github.com/tchx84/Flatseal) to enable D-Bus access for your app
+
+i personally had to do this with Muzika & Vivaldi to get things working smoothly on my own system
 
 ## credits
 

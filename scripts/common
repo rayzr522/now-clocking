@@ -1,0 +1,55 @@
+#!/bin/bash
+
+function _load_config {
+  local scripts_dir="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+  local config_path="$scripts_dir/../config.env"
+  if [ -f "$config_path" ]; then
+    source "$config_path"
+  fi
+}
+_load_config
+unset _load_config
+
+function get_active_player {
+  playerctl status -a -f "{{playerName}} {{status}}" | grep "Playing" | awk '{print $1}'
+}
+
+function active_playerctl {
+  local active_player="$(get_active_player)"
+  test -n "$active_player" && playerctl -p "$(get_active_player)" "$@"
+}
+
+function get_platform {
+  if [ -n "$(get_active_player)" ]; then
+    echo playerctl
+  elif command -v cmus-remote >/dev/null && cmus-remote -Q 2>/dev/null; then
+    echo cmus
+  fi
+}
+
+function playerctl_get_source {
+  get_active_player
+}
+function playerctl_get_art {
+  # hack to make spotify images load
+  active_playerctl metadata mpris:artUrl | sed 's;https://open.spotify.com;http://i.scdn.co;g'
+}
+function playerctl_get_artist {
+  active_playerctl metadata artist
+}
+function playerctl_get_title {
+  active_playerctl metadata title
+}
+
+function cmus_get_source {
+  echo cmus
+}
+function cmus_get_art {
+  cmus-remote -Q | grep 'file' | cut -d " " -f 2-
+}
+function cmus_get_artist {
+  cmus-remote -Q | grep 'tag artist' | cut -d " " -f 3-
+}
+function cmus_get_title {
+  cmus-remote -Q | grep title | cut -d " " -f 3- 
+}
