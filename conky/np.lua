@@ -5,8 +5,8 @@ conky.config = {
 
     -- Positioning
     alignment = 'bottom_left',
-    gap_x = 50 + tonumber(os.getenv("NOWCLOCKING_X_OFFSET") or 0),
-    gap_y = 85 + tonumber(os.getenv("NOWCLOCKING_Y_OFFSET") or 0),
+    gap_x = 50 + tonumber(os.getenv("NOW_CLOCKING_OFFSET_X") or 0),
+    gap_y = 85 + tonumber(os.getenv("NOW_CLOCKING_OFFSET_Y") or 0),
     minimum_width = 1200,
     maximum_width = 1200,
     minimum_height = 200,

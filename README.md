@@ -61,7 +61,7 @@ $ sudo pacman -S conky ffmpeg playerctl
 2. Clone the repo:
 
 ```bash
-$ git clone git@github.com:Rayzr522/now-clocking.git
+$ git clone git@github.com:rayzr522/now-clocking.git
 ```
 
 3. Ensure that all required [fonts](#fonts) are installed:
@@ -84,9 +84,9 @@ Originally, this had to do with weird transparency issues in Conky that required
 
 > **How do I move the widget to another monitor?**
 
-Multi-monitor support on Conky is weird. This might not be the right solution, but I added support for a `NOWCLOCKING_X_OFFSET` and `NOWCLOCKING_Y_OFFSET` variable.
+Multi-monitor support on Conky is weird. This might not be the right solution, but I added support for a `NOW_CLOCKING_OFFSET_X` and `NOW_CLOCKING_OFFSET_Y` variable.
 
-For example, I have 2 2560x1440 monitors with the right monitor being my primary. To move the widget to the left, I just have to set `NOWCLOCKING_X_OFFSET` to `-2560` when starting conky.
+For example, I have 2 2560x1440 monitors with the right monitor being my primary. To move the widget to the left, I just have to set `NOW_CLOCKING_OFFSET_X` to `-2560` when starting conky.
 
 ## Credits
 
