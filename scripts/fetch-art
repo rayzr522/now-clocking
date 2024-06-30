@@ -9,7 +9,7 @@ if [ -z "$platform" ]; then
 fi
 
 source="$("$platform"_get_source)"
-url="$("$platform"_get_art)"
+art="$("$platform"_get_art)"
 
 data_dir="$(realpath ../data)"
 mkdir -p "$data_dir"
@@ -18,15 +18,23 @@ img_path="$data_dir/$source.png"
 
 touch "$cache_path"
 content="$(cat "$cache_path")"
-expected_content="$url $NOW_CLOCKING_ARTWORK_TINT"
+expected_content="$art $NOW_CLOCKING_ARTWORK_TINT"
 
-if [ -n "$url" ] && [ "$content" != "$expected_content" ]; then
+if [ "$content" != "$expected_content" ]; then
   echo "$expected_content" > "$cache_path"
-  curl -s "$url" > "$img_path"
-
-  if [ ! -z "$NOW_CLOCKING_ARTWORK_TINT" ] && command -v convert >/dev/null; then
-    # convert in-place
-    convert "$img_path" -colorspace gray -fill "$NOW_CLOCKING_ARTWORK_TINT" -tint 100 "$img_path"
+  test -f "$img_path" && rm "$img_path"
+  if [ -n "$art" ]; then
+    if [[ "$art" = http* ]]; then
+      cart -s "$art" -o "$img_path"
+    elif [ -f "$art" ]; then
+      cp "$art" "$img_path"
+    else 
+      echo "unknown art: $art" >&2
+      exit 1
+    fi
+    if [ -n "$NOW_CLOCKING_ARTWORK_TINT" ] && command -v convert >/dev/null; then
+      convert "$img_path" -colorspace gray -fill "$NOW_CLOCKING_ARTWORK_TINT" -tint 100 "$img_path"
+    fi
   fi
 fi
 

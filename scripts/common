@@ -20,10 +20,10 @@ function active_playerctl {
 }
 
 function get_platform {
-  if [ -n "$(get_active_player)" ]; then
-    echo playerctl
-  elif command -v cmus-remote >/dev/null && cmus-remote -Q 2>/dev/null; then
+  if command -v cmus-remote >/dev/null && cmus-remote -Q &>/dev/null; then
     echo cmus
+  elif [ -n "$(get_active_player)" ]; then
+    echo playerctl
   fi
 }
 
@@ -45,7 +45,16 @@ function cmus_get_source {
   echo cmus
 }
 function cmus_get_art {
-  cmus-remote -Q | grep 'file' | cut -d " " -f 2-
+  local file="$(cmus-remote -Q | grep 'file' | cut -d " " -f 2-)" 
+  mkdir -p ./data
+  local extracted="$(realpath ./data)/cmus_extracted.png"
+  if ffmpeg -y -i "$file" -an -vcodec copy "$extracted" &>/dev/null; then
+    echo "$extracted"
+  else
+    local dir="$(dirname "$file")"
+    # inspired by https://github.com/TiredSounds/cmus-conky/blob/master/cmus-conky-art.sh
+    find "$dir" -maxdepth 1 -regex '.*/\(cover\|folder\|front\)\.\(png\|jpe?g\)' | head -n1
+  fi
 }
 function cmus_get_artist {
   cmus-remote -Q | grep 'tag artist' | cut -d " " -f 3-
