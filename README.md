@@ -82,6 +82,12 @@ $ path/to/now-clocking/start.sh
 
 Originally, this had to do with weird transparency issues in Conky that required a non-transparent album artwork. However, that has long since been patched in Conky. The widgets have remained separated, however, so as to make aligning everything easier, especially since one widget functions both as the track info _and_ a clock.
 
+> **How do I move the widget to another monitor?**
+
+Multi-monitor support on Conky is weird. This might not be the right solution, but I added support for a `NOWCLOCKING_X_OFFSET` and `NOWCLOCKING_Y_OFFSET` variable.
+
+For example, I have 2 2560x1440 monitors with the right monitor being my primary. To move the widget to the left, I just have to set `NOWCLOCKING_X_OFFSET` to `-2560` when starting conky.
+
 ## Credits
 
 Huge props to the original creator, [@gamehelp16](https://github.com/gamehelp16). I used this script back in 2017/2018 and rediscovered it in 2020, and decided to rework it to be more portable, efficient, and updated to modern Conky config standards.
