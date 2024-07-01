@@ -1,35 +1,13 @@
-conky.config = {
-    -- Run settings
-    total_run_times = 0,
-    update_interval = 1,
-    lua_load = './conky/_funcs.lua',
-
-    -- Positioning
-    alignment = 'bottom_left',
+conky.config = require("conky/_common").extend_config {
+    -- positioning
     gap_x = 50 + tonumber(os.getenv("NOW_CLOCKING_OFFSET_X") or 0),
     gap_y = 85 + tonumber(os.getenv("NOW_CLOCKING_OFFSET_Y") or 0),
-    xinerama_head = tonumber(os.getenv("NOW_CLOCKING_DISPLAY") or 0),
-    minimum_width = 1200,
-    maximum_width = 1200,
     minimum_height = 200,
 
-    -- Draw settings
-    double_buffer = true,
-    draw_shades = false,
-    draw_blended = false,
-
-    -- Compositor settings
-    own_window = true,
-    own_window_argb_visual = true,
-    own_window_argb_value = 0,
-    own_window_transparent = true,
-    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
-    own_window_type = 'dock',
-
-    -- Text settings
+    -- text settings
     uppercase = true,
     use_xft = true,
-    override_utf8_locale = true
+    override_utf8_locale = true,
 };
 
 conky.text = [[
