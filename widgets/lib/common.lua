@@ -5,7 +5,7 @@ local M = {}
 function M.extend_config(overrides)
   local config = {
     -- load common funcs
-    lua_load = './conky/_funcs.lua',
+    lua_load = './widgets/lib/funcs.lua',
 
     -- run settings
     total_run_times = 0,
