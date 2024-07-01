@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 cd "$(dirname "$0")"
 source ./common
 
@@ -25,7 +27,7 @@ if [ "$content" != "$expected_content" ]; then
   test -f "$img_path" && rm "$img_path"
   if [ -n "$art" ]; then
     if [[ "$art" = http* ]]; then
-      cart -s "$art" -o "$img_path"
+      curl -s "$art" -o "$img_path"
     elif [ -f "$art" ]; then
       cp "$art" "$img_path"
     else 
