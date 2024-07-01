@@ -2,6 +2,7 @@ conky.config = {
     -- Run settings
     total_run_times = 0,
     update_interval = 1,
+    lua_load = './conky/_funcs.lua',
 
     -- Positioning
     alignment = 'bottom_left',
@@ -37,5 +38,5 @@ ${color #fff}${font Gotham Book:pixelsize=15}
 ${color #fff}${font Gotham Book:pixelsize=44}           ${font Gotham:style=bold:pixelsize=46}${exec ./scripts/get-metadata artist}${font Gotham:style=bold:pixelsize=10}
 ${color #fff}${font Gotham Book:pixelsize=44}           ${font Gotham Book:pixelsize=23}${exec ./scripts/get-metadata title}
 ${else}${color #fff}${font Gotham Book:pixelsize=80}${time %H:%M:%S}${font Gotham Book:pixelsize=65}
-${color #fff}${font Montserrat Light:pixelsize=35}${exec ./scripts/now}${endif}
+${color #fff}${font Montserrat Light:pixelsize=35}${lua now}${endif}
 ]];
