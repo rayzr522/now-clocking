@@ -11,7 +11,11 @@ _load_config
 unset _load_config
 
 function get_active_player {
-  playerctl status -a -f "{{playerName}} {{status}}" | grep "Playing" | awk '{print $1}'
+  local player="$(playerctl status -a -f "{{playerName}} {{status}}" | grep "Playing" | awk '{print $1}'
+  # sometimes players kinda break and wont respond to metadata requests. break gracefully if that happens <3
+  if playerctl -p "$player" metadata &>/dev/null; then
+    echo "$player"
+  fi
 }
 
 function active_playerctl {
