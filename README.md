@@ -87,6 +87,7 @@ the settings you can configure are as follows:
 | `NOW_CLOCKING_DISPLAY`      | `1`                  | changes the display that the widget renders on via the `xinerama_head` conky option. `0` is probably your default display                                                           |
 | `NOW_CLOCKING_OFFSET_X`     | `69`                 | shifts the widget on the X axis by the given amount. default positioning is designed to look pretty well balanced, but if you need to adjust it this gives you an easy way to do so |
 | `NOW_CLOCKING_OFFSET_Y`     | `420`                | same as above, but on the Y axis                                                                                                                                                    |
+| `NOW_CLOCKING_TEXT_COLOR`   | `#ffffff`            | changes the color of the text. useful if you're using a lighter wallpaper                                                                                                           |
 
 ## FAQ
 
