@@ -12,6 +12,15 @@ unset _load_config
 
 function get_active_player {
   local player="$(playerctl status -a -f "{{playerName}} {{status}}" | grep "Playing" | awk '{print $1}')"
+  if [ -z "$player" ]; then
+    return
+  fi
+  # ty pnpm for teaching me this pattern. its great. i luv it
+  case ",$NOW_CLOCKING_IGNORED_PLAYERCTL_SOURCES," in
+    # exit early if player is ignored
+    *",$player,"*) return ;;
+    *) ;;
+  esac
   # sometimes players kinda break and wont respond to metadata requests. break gracefully if that happens <3
   if playerctl -p "$player" metadata &>/dev/null; then
     echo "$player"
