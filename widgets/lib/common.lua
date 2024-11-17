@@ -26,6 +26,7 @@ function M.extend_config(overrides)
     own_window_argb_value = 0,
     own_window_transparent = true,
     own_window_type = 'desktop',
+    own_window_hints = 'undecorated,below,skip_taskbar,sticky,skip_pager',
   }
 
   for k, v in pairs(overrides) do
