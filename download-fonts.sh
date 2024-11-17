@@ -26,9 +26,14 @@ download_font() {
 
     case $url_type in
         fontsgeek-zip)
-            curl -H "Referer: https://www.fontsgeek.com" -L "$url" -o download.zip
+            set -ex
+            fontsgeek_cookies="${fontsgeek_cookies:-$(mktemp)}"
+            local csrfmiddlewaretoken="$(curl -c "$fontsgeek_cookies" "$url" | grep csrfmiddlewaretoken | cut -d '"' -f6)"
+            # curl -c "$fontsgeek_cookies" -H 'content-Type: application/x-www-form-urlencoded' -d "csrfmiddlewaretoken=$csrfmiddlewaretoken&method=zip" "$url"
+            curl -b "$fontsgeek_cookies" -c "$fontsgeek_cookies" -d "csrfmiddlewaretoken=$csrfmiddlewaretoken&method=zip" "$url"
+            curl -b "$fontsgeek_cookies" -c "$fontsgeek_cookies" -L "$url/download" -o download.zip
             unzip -d download download.zip
-            mv -i download/*/*.otf "$fonts_dir"
+            find download \( -name '*.ttf' -or -name '*.otf' \) -exec mv {} "$fonts_dir" \;
             rm -r download
             ;;
         googlefonts)
@@ -56,8 +61,8 @@ workdir="$(mktemp -d)"
 mkdir -p "$fonts_dir"
 cd "$workdir"
 
-download_font fontsgeek-zip "Gotham Book" "Gotham Book" "https://media.fontsgeek.com/download/zip/g/o/gotham-book_dfEm3.zip"
-download_font fontsgeek-zip "Gotham Bold" "Gotham:style=Bold" "https://media.fontsgeek.com/download/zip/g/o/gotham-bold_KicGd.zip"
+download_font fontsgeek-zip "Gotham Book" "Gotham Book" "https://fontsgeek.com/gotham-book-font"
+download_font fontsgeek-zip "Gotham Bold" "Gotham:style=Bold" "https://fontsgeek.com/gotham-bold-font"
 download_font googlefonts "Montserrat" "Montserrat" "Montserrat"
 
 if [[ $total_downloaded -gt 0 ]]; then
