@@ -29,7 +29,6 @@ download_font() {
             set -ex
             fontsgeek_cookies="${fontsgeek_cookies:-$(mktemp)}"
             local csrfmiddlewaretoken="$(curl -c "$fontsgeek_cookies" "$url" | grep csrfmiddlewaretoken | cut -d '"' -f6)"
-            # curl -c "$fontsgeek_cookies" -H 'content-Type: application/x-www-form-urlencoded' -d "csrfmiddlewaretoken=$csrfmiddlewaretoken&method=zip" "$url"
             curl -b "$fontsgeek_cookies" -c "$fontsgeek_cookies" -d "csrfmiddlewaretoken=$csrfmiddlewaretoken&method=zip" "$url"
             curl -b "$fontsgeek_cookies" -c "$fontsgeek_cookies" -L "$url/download" -o download.zip
             unzip -d download download.zip
