@@ -40,7 +40,7 @@ if [ "$content" != "$expected_content" ]; then
   fi
 fi
 
-if [ "$(wc -c "$img_path" | awk '{print $1}')" -gt 0 ]; then
+if [ -f "$img_path" ] && [ "$(wc -c "$img_path" | awk '{print $1}')" -gt 0 ]; then
   echo "\${image $img_path -p 0,0 -s 125x125 -n}"
 else
   echo "\${image ./placeholder.png -p 0,0 -s 125x125}"
