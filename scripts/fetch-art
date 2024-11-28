@@ -26,7 +26,7 @@ if [ "$content" != "$expected_content" ]; then
   echo "$expected_content" > "$cache_path"
   test -f "$img_path" && rm "$img_path"
   if [ -n "$art" ]; then
-    if [[ "$art" = http* ]]; then
+    if [[ "$art" = http* ]] || [[ "$art" = file:* ]]; then
       curl -s "$art" -o "$img_path"
     elif [ -f "$art" ]; then
       cp "$art" "$img_path"
