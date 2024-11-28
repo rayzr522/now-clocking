@@ -21,6 +21,14 @@ function get_active_player {
     *",$player,"*) return ;;
     *) ;;
   esac
+
+  local domain="$(playerctl -p "$player" metadata xesam:url | awk -F[/:] '{print $4}')"
+  if [ -n "$domain" ]; then
+    case ",$NOW_CLOCKING_IGNORED_PLAYERCTL_DOMAINS," in
+      *",$domain,"*) return ;;
+      *) ;;
+    esac
+  fi
   # sometimes players kinda break and wont respond to metadata requests. break gracefully if that happens <3
   if playerctl -p "$player" metadata &>/dev/null; then
     echo "$player"

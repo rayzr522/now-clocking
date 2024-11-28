@@ -81,14 +81,15 @@ there's a few things you can configure about these widgets via environment varia
 
 the settings you can configure are as follows:
 
-| setting                                  | example              | description                                                                                                                                                                         |
-| ---------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `NOW_CLOCKING_ARTWORK_TINT`              | `green` or `#aabbcc` | applies a color filter to the album artwork. can be useful for matching it to your wallpaper/theme. requires `imagemagick` to be installed                                          |
-| `NOW_CLOCKING_DISPLAY`                   | `1`                  | changes the display that the widget renders on via the `xinerama_head` conky option. `0` is probably your default display                                                           |
-| `NOW_CLOCKING_OFFSET_X`                  | `69`                 | shifts the widget on the X axis by the given amount. default positioning is designed to look pretty well balanced, but if you need to adjust it this gives you an easy way to do so |
-| `NOW_CLOCKING_OFFSET_Y`                  | `420`                | same as above, but on the Y axis                                                                                                                                                    |
-| `NOW_CLOCKING_TEXT_COLOR`                | `#ffffff`            | changes the color of the text. useful if you're using a lighter wallpaper                                                                                                           |
-| `NOW_CLOCKING_IGNORED_PLAYERCTL_SOURCES` | `chromium,vlc`       | lets you ignore certain playerctl players (e.x. if you dont want youtube videos to be displayed by now-clocking)                                                                    |
+| setting                                  | example                           | description                                                                                                                                                                         |
+| ---------------------------------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NOW_CLOCKING_ARTWORK_TINT`              | `green` or `#aabbcc`              | applies a color filter to the album artwork. can be useful for matching it to your wallpaper/theme. requires `imagemagick` to be installed                                          |
+| `NOW_CLOCKING_DISPLAY`                   | `1`                               | changes the display that the widget renders on via the `xinerama_head` conky option. `0` is probably your default display                                                           |
+| `NOW_CLOCKING_OFFSET_X`                  | `69`                              | shifts the widget on the X axis by the given amount. default positioning is designed to look pretty well balanced, but if you need to adjust it this gives you an easy way to do so |
+| `NOW_CLOCKING_OFFSET_Y`                  | `420`                             | same as above, but on the Y axis                                                                                                                                                    |
+| `NOW_CLOCKING_TEXT_COLOR`                | `#ffffff`                         | changes the color of the text. useful if you're using a lighter wallpaper                                                                                                           |
+| `NOW_CLOCKING_IGNORED_PLAYERCTL_SOURCES` | `chromium,vlc`                    | lets you ignore certain playerctl players (e.x. if you dont want youtube videos to be displayed by now-clocking)                                                                    |
+| `NOW_CLOCKING_IGNORED_PLAYERCTL_DOMAINS` | `www.youtube.com,www.netflix.com` | lets you ignore certain playerctl xesam:url domains. useful if you want things like youtube music to work with this widget, but you dont want to see i.e. netflix                   |
 
 ## FAQ
 
