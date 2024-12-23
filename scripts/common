@@ -29,8 +29,9 @@ function get_active_player {
       *) ;;
     esac
   fi
+
   # sometimes players kinda break and wont respond to metadata requests. break gracefully if that happens <3
-  if playerctl -p "$player" metadata &>/dev/null; then
+  if playerctl -p "$player" metadata &>/dev/null && [ -n "$(playerctl -p "$player" metadata xesam:artist)" ]; then
     echo "$player"
   fi
 }
